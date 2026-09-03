@@ -905,11 +905,31 @@
 
   .preview-wrap-figma,
   .preview-card-container-figma {
-    display: none !important;
+    width: 100%;
+    height: 200px;
   }
 
-  .fleet-form-figma {
-    max-width: 100%;
+  .preview-card-inner-figma {
+    border-radius: 12px;
+  }
+
+  .preview-card__body-figma {
+    padding: 0 24px 24px;
+  }
+
+  .preview-card__body-figma h2 {
+    font-size: 22px;
+  }
+
+  .preview-card__body-figma p {
+    font-size: 14px;
+    margin-top: 8px;
+    -webkit-line-clamp: 2;
+  }
+
+  .preview-card__top {
+    padding: 16px 24px;
+    font-size: 14px;
   }
 
   .form-row-1-figma {
