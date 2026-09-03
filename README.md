@@ -1,99 +1,107 @@
-# ✨ Histia Fleets - Web App
+<div align="center">
+  <h1 align="center">Histia Fleets</h1>
+  <p align="center">
+    A robust, modern web application for managing organization fleets, engineered with a 1:1 fidelity to professional Figma specifications.
+  </p>
+  <p align="center">
+    <a href="#overview">Overview</a> •
+    <a href="#key-features">Key Features</a> •
+    <a href="#technical-architecture">Architecture</a> •
+    <a href="#getting-started">Getting Started</a>
+  </p>
+</div>
 
-![Next.js](https://img.shields.io/badge/Next.js-16.3-black?style=for-the-badge&logo=next.js)
-![Prisma](https://img.shields.io/badge/Prisma-7.9-2D3748?style=for-the-badge&logo=prisma)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-4169E1?style=for-the-badge&logo=postgresql)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)
+---
 
-A modern, highly interactive web application for managing "Fleets" built as a 1:1 replica of a professional Figma design. The application features a stunning glassmorphism UI, real-time 3D preview cards, internationalization, and seamless data persistence.
+## Overview
 
-## 🚀 Features
+**Histia Fleets** is a full-stack Next.js application designed to provide a seamless and highly interactive user experience for fleet management. The project demonstrates advanced frontend techniques, including glassmorphism UI, real-time 3D interactions, and progressive blurring, backed by a robust PostgreSQL and Prisma database layer.
 
-- **1:1 Figma Match**: Pixel-perfect implementation of the provided UI/UX designs.
-- **Dynamic 3D Preview Cards**: Interactive tilt cards with mouse-tracking specular glare and dynamic color accents (adapted from 21st.dev).
-- **Internationalization (i18n)**: Fully translated into English and French using **Intlayer**. Seamlessly toggle between `/fr/fleets` and `/en/fleets`.
-- **Infinite Scrolling**: Cursor-based pagination using **TanStack Query v5** to efficiently load large lists of fleets.
-- **Optimistic UI Updates**: Instant feedback when creating a fleet, before the server responds.
-- **Advanced Animations**: Smooth page transitions, modal overlays with background progressive blurring, and slide-in help panels powered by **Framer Motion**.
-- **Form Validation**: Robust form handling with **React Hook Form** and **Zod**.
-- **Responsive Design**: Carefully optimized for `1920x1080` and `1400x900` displays.
+## Key Features
 
-## 🛠️ Tech Stack
+- **Pixel-Perfect Implementation**  
+  A strict 1:1 translation of the provided UI/UX Figma designs, ensuring complete visual fidelity across 1920x1080 and 1400x900 viewports.
+  
+- **Interactive 3D Preview Engine**  
+  Features dynamic tilt cards equipped with mouse-tracking specular glare and reactive color accents that update in real-time as users modify fleet configurations.
+  
+- **Seamless Internationalization (i18n)**  
+  Fully localized in English and French using Intlayer. Content routes automatically adapt via `/en/fleets` and `/fr/fleets`.
+  
+- **Optimized Data Fetching & Infinite Scroll**  
+  Utilizes TanStack Query v5 for cursor-based pagination, ensuring efficient rendering and loading of extensive fleet lists without performance degradation.
+  
+- **Advanced Micro-Interactions & Animations**  
+  Powered by Framer Motion, the application features smooth page transitions, sliding contextual help panels, and complex modal overlays with progressive background blurring.
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, React 19)
-- **Database**: PostgreSQL
-- **ORM**: [Prisma](https://www.prisma.io/) (v7.9 with `@prisma/adapter-pg`)
-- **Styling**: Vanilla CSS & Tailwind CSS v4
-- **State Management / Fetching**: [TanStack Query v5](https://tanstack.com/query/latest)
-- **i18n**: [Intlayer](https://intlayer.org/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+## Technical Architecture
 
-## 📦 Getting Started
+### Core Stack
+| Technology | Description |
+| :--- | :--- |
+| **Next.js 16 (React 19)** | App Router, Server Components, and optimized rendering |
+| **PostgreSQL & Prisma** | Relational database management with strongly-typed ORM access |
+| **TanStack Query v5** | Server state management, caching, and optimistic UI updates |
+| **Tailwind CSS v4** | Utility-first styling with custom CSS for complex glassmorphism |
+
+### Ecosystem & Tooling
+- **Validation:** Zod & React Hook Form
+- **Animations:** Framer Motion
+- **Internationalization:** Intlayer
+- **Language:** TypeScript (Strict Mode)
+
+## Getting Started
+
+Follow these instructions to set up the project locally for development and testing.
 
 ### Prerequisites
 
-- Node.js 20+
-- PostgreSQL server running locally or remotely.
+Ensure you have the following installed on your local machine:
+- **Node.js** (v20 or higher)
+- **PostgreSQL** database instance (local or remote)
+- **Git**
 
-### 1. Clone the repository
+### Installation
 
-```bash
-git clone https://github.com/bahaayadi02/Cas-pratique-Histia.git
-cd Cas-pratique-Histia/app
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/bahaayadi02/Cas-pratique-Histia.git
+   cd Cas-pratique-Histia/app
+   ```
 
-### 2. Install dependencies
+2. **Install dependencies**  
+   The project is configured for `bun`, but standard package managers are fully supported.
+   ```bash
+   npm install
+   ```
 
-This project uses `bun` (but you can use `npm` or `pnpm`):
+3. **Environment Configuration**  
+   Create a `.env` file in the `app` directory and define your PostgreSQL connection string:
+   ```env
+   DATABASE_URL="postgresql://username:password@localhost:5432/fleets_db"
+   ```
 
-```bash
-npm install
-# or
-bun install
-```
+4. **Database Initialization**  
+   Synchronize the Prisma schema with your database and seed initial data:
+   ```bash
+   npx prisma db push
+   npx prisma db seed
+   ```
 
-### 3. Setup Environment Variables
+5. **Start the Development Server**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:3000`.
 
-Create a `.env` file in the `app` directory and configure your database connection string:
+## Scripts Reference
 
-```env
-DATABASE_URL="postgresql://postgres:yourpassword@localhost:5432/fleets_db"
-```
+- `npm run dev` - Initializes the local development server.
+- `npm run build` - Compiles the application for production deployment.
+- `npm run start` - Boots the production server.
+- `npm run lint` - Executes ESLint for static code analysis.
 
-### 4. Database Setup (Prisma)
-
-Push the database schema and seed the database with initial mock data:
-
-```bash
-npx prisma db push
-npx prisma db seed
-```
-*(The seed script generates 42 initial fleets to test infinite scrolling).*
-
-### 5. Run the Development Server
-
-```bash
-npm run dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000/en/fleets](http://localhost:3000/en/fleets) (English) or [http://localhost:3000/fr/fleets](http://localhost:3000/fr/fleets) (French) in your browser.
-
-## 🎨 Design Highlights
-
-- **Live Preview Sync**: When creating a fleet, the 3D card on the left instantly updates its title, description, and color border gradient.
-- **Glassmorphism Modal**: The creation modal features a stunning dark glass overlay with custom backdrop blurring that dims and softly blurs the background without altering the page scale.
-- **Help Panel**: Interactive sliding help panels providing contextual guidance to the user.
-
-## 📜 Scripts
-
-- `npm run dev`: Starts the Next.js development server.
-- `npm run build`: Builds the application for production.
-- `npm run start`: Starts the production server.
-- `npm run lint`: Runs ESLint to check for code issues.
-
-## 📄 License
-
-This project is licensed under the MIT License.
+---
+<div align="center">
+  <sub>Developed for the Histia technical assessment.</sub>
+</div>
