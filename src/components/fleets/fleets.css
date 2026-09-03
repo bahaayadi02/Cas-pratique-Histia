@@ -887,25 +887,29 @@
 
   .fleet-modal-fullscreen {
     overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
   }
 
   .fleet-overlay-container {
     padding: 20px 16px;
+    height: auto;
+    min-height: 100%;
+    justify-content: flex-start;
   }
 
   .fleet-overlay-center {
     flex-direction: column;
     gap: 24px;
+    margin-top: 32px;
   }
 
   .preview-wrap-figma,
   .preview-card-container-figma {
-    width: 100%;
-    height: 280px;
+    display: none !important;
   }
 
-  .preview-card__body-figma h2 {
-    font-size: 24px;
+  .fleet-form-figma {
+    max-width: 100%;
   }
 
   .form-row-1-figma {
