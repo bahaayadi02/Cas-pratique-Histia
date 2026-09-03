@@ -1,0 +1,925 @@
+/* ==========================================================================
+   HISTIA FLEETS STYLESHEET
+   Accurate 1:1 match with Figma Design (1920x1080 & 1400x900)
+   ========================================================================== */
+
+.fleets-page {
+  position: relative;
+  min-height: 100vh;
+  color: #f7f5ff;
+  background: radial-gradient(circle at 6% 36%, rgba(142, 121, 231, 0.48), transparent 19%),
+    linear-gradient(135deg, #28234f 0%, #292352 50%, #262044 100%);
+  overflow-x: hidden;
+}
+
+.fleets-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 48% 10%, rgba(88, 75, 160, 0.22), transparent 35%),
+    radial-gradient(circle at 75% 75%, rgba(74, 61, 129, 0.15), transparent 28%);
+}
+
+/* Header */
+.fleets-header {
+  height: 88px;
+  padding: 0 clamp(24px, 5.8vw, 112px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 10;
+}
+
+.fleets-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #eeeaff;
+  letter-spacing: -0.01em;
+}
+
+.brand-mark {
+  color: #bca8ff;
+  font-size: 22px;
+}
+
+.fleets-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.lang-link {
+  color: #a8a2c2;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.lang-link:hover,
+.lang-link.is-active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.lang-sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.text-action {
+  border: 0;
+  background: transparent;
+  color: #c9c1e5;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+
+.text-action:hover {
+  color: #ffffff;
+}
+
+.text-action.is-active {
+  color: #bca8ff;
+}
+
+/* Page Help Panel (main page) */
+.page-help-panel {
+  position: absolute;
+  top: 72px;
+  right: clamp(24px, 5.8vw, 112px);
+  z-index: 100;
+  animation: helpSlideIn 0.25s ease forwards;
+}
+
+/* Main Content Container */
+.fleets-content {
+  max-width: 1720px;
+  margin: 28px auto 0;
+  padding: 0 40px 72px;
+  position: relative;
+  z-index: 1;
+}
+
+.fleets-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.eyebrow {
+  color: #bab3d1;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.fleets-toolbar h1 {
+  font-size: 36px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.fleets-toolbar .inline-flex {
+  color: #efeaff;
+  background: #7254cf;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(114, 84, 207, 0.35);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.fleets-toolbar .inline-flex:hover {
+  background: #7d5ee0;
+  transform: translateY(-1px);
+}
+
+/* Fleet Card Grid */
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.fleet-card {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(189, 178, 255, 0.28);
+  border-radius: 10px;
+  background: #17142f;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  box-shadow: 0 14px 35px rgba(8, 6, 24, 0.2);
+}
+
+.fleet-card:hover {
+  border-color: rgba(210, 202, 255, 0.45);
+  box-shadow: 0 20px 46px rgba(8, 6, 24, 0.42);
+}
+
+.fleet-card__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, color-mix(in srgb, var(--accent) 56%, transparent), transparent 58%);
+  opacity: 0.65;
+}
+
+.fleet-card__menu {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  color: #9b97ae;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+  padding: 4px;
+}
+
+.fleet-card__body {
+  position: absolute;
+  left: 24px;
+  right: 20px;
+  top: 80px;
+}
+
+.fleet-card h2 {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.fleet-card p {
+  color: #a6a1b8;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fleet-card__companies {
+  position: absolute;
+  left: 24px;
+  bottom: 26px;
+  color: #e5e1ee;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-sentinel {
+  height: 20px;
+}
+
+.empty-state {
+  padding: 80px 0;
+  text-align: center;
+  color: #aaa4be;
+  font-size: 16px;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  gap: 16px;
+  color: #aaa4be;
+}
+
+.loading-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 0;
+  color: #bbb5d0;
+  font-size: 14px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #9d80f5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.spinner-small {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #9d80f5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   FIGMA OVERLAY VIEW (Full-bleed floating canvas with Return & Help)
+   ========================================================================== */
+
+.fleet-modal-fullscreen {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+.fleet-overlay-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 36px 64px 48px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Top Header */
+.fleet-overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.overlay-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #d2caf0;
+  font-size: 16px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.overlay-back-btn .arrow {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.overlay-back-btn:hover {
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+
+.overlay-help-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #9d96b8;
+  font-size: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.overlay-help-btn:hover {
+  color: #ffffff;
+}
+
+.overlay-help-btn.is-active {
+  color: #bca8ff;
+}
+
+/* Help Panel */
+.help-panel-figma {
+  position: absolute;
+  top: 72px;
+  right: 64px;
+  z-index: 100;
+  animation: helpSlideIn 0.25s ease forwards;
+}
+
+@keyframes helpSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.help-panel-inner {
+  position: relative;
+  background: rgba(26, 22, 54, 0.96);
+  border: 1px solid rgba(188, 168, 255, 0.18);
+  border-radius: 14px;
+  padding: 28px 32px 24px;
+  max-width: 380px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+}
+
+.help-panel-inner h3 {
+  font-size: 18px;
+  font-weight: 650;
+  color: #eeeaff;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.help-panel-inner ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.help-panel-inner li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #b4aed0;
+}
+
+.help-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: rgba(188, 168, 255, 0.14);
+  color: #bca8ff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.help-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #7b7490;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.help-close-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Center Stage */
+.fleet-overlay-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 84px;
+  margin: auto 0;
+  width: 100%;
+}
+
+/* Left: Preview Section */
+.preview-wrap-figma {
+  display: flex;
+  flex-direction: column;
+  width: 440px;
+  flex-shrink: 0;
+}
+
+.preview-breadcrumb-figma {
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #b7b0d0;
+  display: flex;
+  align-items: center;
+}
+
+.preview-breadcrumb-figma strong {
+  color: #ffffff;
+  font-weight: 600;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.preview-card-container-figma {
+  width: 440px;
+  height: 500px;
+  flex-shrink: 0;
+}
+
+.tilt-card-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.tilt-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.tilt-card-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 14px;
+  z-index: 1;
+}
+
+.tilt-card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 14px;
+  z-index: 2;
+}
+
+.tilt-card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.preview-card-inner-figma {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 14px;
+  background: #15132b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+.preview-card__top {
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #a29db8;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.preview-card__tag {
+  display: inline-flex;
+  align-items: center;
+}
+
+.preview-card__body-figma {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 36px 40px;
+}
+
+.preview-card__body-figma h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.preview-card__body-figma p {
+  font-size: 18px;
+  color: #7b7593;
+  margin-top: 18px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Right: Form Section */
+.fleet-form-figma {
+  display: flex;
+  flex-direction: column;
+  max-width: 620px;
+  width: 100%;
+}
+
+.form-header-figma h1 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.form-subtitle-figma {
+  color: #9f99bc;
+  font-size: 15px;
+  margin-bottom: 36px;
+}
+
+.form-row-1-figma {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.name-field-figma {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.color-field-figma {
+  flex: 1;
+}
+
+.form-field-figma label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #eae5fd;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-field-figma label span {
+  color: #e3c4ff;
+}
+
+.form-field-figma input,
+.form-field-figma textarea {
+  width: 100%;
+  background: rgba(194, 187, 220, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.form-field-figma input:focus,
+.form-field-figma textarea:focus {
+  border-color: #8c71db;
+  background: rgba(194, 187, 220, 0.2);
+}
+
+.form-field-figma input::placeholder,
+.form-field-figma textarea::placeholder {
+  color: #7b7490;
+}
+
+.error-text-figma {
+  display: block;
+  margin-top: 6px;
+  color: #ff7f8c;
+  font-size: 12.5px;
+}
+
+.color-options-row-figma {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  height: 44px;
+}
+
+.color-swatch-dot-figma {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.color-swatch-dot-figma:hover {
+  transform: scale(1.15);
+}
+
+.color-swatch-dot-figma.is-active {
+  box-shadow: 0 0 0 2px #15132b, 0 0 0 4px #56aaff;
+  transform: scale(1.08);
+}
+
+.desc-field-figma {
+  margin-bottom: 36px;
+}
+
+.desc-field-figma textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Actions */
+.form-actions-figma {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-cancel-figma {
+  background: rgba(220, 56, 72, 0.16);
+  color: #ea5467;
+  font-weight: 500;
+  font-size: 14.5px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-cancel-figma:hover {
+  background: rgba(220, 56, 72, 0.28);
+  color: #ffffff;
+}
+
+.btn-submit-figma {
+  background: #7353cf;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 14.5px;
+  padding: 10px 26px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(115, 83, 207, 0.35);
+  transition: all 0.15s ease;
+}
+
+.btn-submit-figma:disabled {
+  background: rgba(255, 255, 255, 0.08);
+  color: #5f5a72;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-submit-figma:hover:not(:disabled) {
+  background: #8061dc;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (1920x1080 & 1400x900)
+   ========================================================================== */
+
+/* 1920x1080 */
+@media (min-width: 1600px) {
+  .fleet-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* 1400x900 */
+@media (max-width: 1599px) and (min-width: 1100px) {
+  .fleets-content {
+    max-width: 1380px;
+    padding: 0 32px 64px;
+  }
+
+  .fleet-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .fleet-overlay-container {
+    padding: 28px 48px 36px;
+  }
+
+  .fleet-overlay-center {
+    gap: 60px;
+  }
+
+  .preview-wrap-figma,
+  .preview-card-container-figma {
+    width: 400px;
+    height: 450px;
+  }
+
+  .preview-card__body-figma h2 {
+    font-size: 32px;
+  }
+
+  .preview-card__body-figma p {
+    font-size: 16px;
+    margin-top: 14px;
+  }
+
+  .form-header-figma h1 {
+    font-size: 28px;
+  }
+
+  .form-subtitle-figma {
+    margin-bottom: 24px;
+  }
+
+  .form-row-1-figma {
+    margin-bottom: 20px;
+  }
+
+  .desc-field-figma {
+    margin-bottom: 24px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1099px) and (min-width: 768px) {
+  .fleet-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .fleet-overlay-center {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .preview-card-container-figma {
+    width: 100%;
+    height: 380px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .fleets-header {
+    height: 72px;
+    padding: 0 20px;
+  }
+
+  .fleets-brand {
+    font-size: 17px;
+  }
+
+  .fleets-header__actions {
+    gap: 12px;
+  }
+
+  .text-action span {
+    display: none;
+  }
+
+  .fleets-content {
+    margin-top: 20px;
+    padding: 0 16px 48px;
+  }
+
+  .fleets-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .fleet-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .fleet-card {
+    height: 230px;
+  }
+
+  .fleet-modal-fullscreen {
+    overflow-y: auto !important;
+  }
+
+  .fleet-overlay-container {
+    padding: 20px 16px;
+  }
+
+  .fleet-overlay-center {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .preview-wrap-figma,
+  .preview-card-container-figma {
+    width: 100%;
+    height: 280px;
+  }
+
+  .preview-card__body-figma h2 {
+    font-size: 24px;
+  }
+
+  .form-row-1-figma {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .name-field-figma {
+    width: 100%;
+  }
+
+  .color-options-row-figma {
+    flex-wrap: wrap;
+    height: auto;
+  }
+}

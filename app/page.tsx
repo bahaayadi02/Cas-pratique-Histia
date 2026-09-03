@@ -1,5 +1,5 @@
-import { TestModal } from "@/components/test-modal";
+import { FleetsPage } from "@/components/fleets/FleetsPage";
 
 export default function Home() {
-	return <TestModal />;
+	return <FleetsPage locale="en" />;
 }

@@ -1,0 +1,25 @@
+// Prisma 7 uses the Rust-free `prisma-client` generator. The connection URL
+// lives in `prisma.config.ts` (not here) — the datasource only names a provider.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// A fleet ("flotte") stored in a user's directory.
+model Fleet {
+  id          String   @id @default(cuid())
+  name        String
+  description String   @default("")
+  color       String   @default("#3B9EF5")
+  companies   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Matches the list ordering (newest first) so pagination stays index-backed.
+  @@index([createdAt(sort: Desc), id(sort: Desc)])
+}

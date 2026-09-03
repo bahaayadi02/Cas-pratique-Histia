@@ -52,23 +52,17 @@ export const ModalRoot = ({
     const workspace = document.getElementById("app-root");
     if (!workspace) return;
     const hasProgressiveBlur = workspace.querySelector("[data-progressive-blur]") !== null;
-    workspace.style.transition = "filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease";
+    workspace.style.transition = "filter 0.3s ease, opacity 0.3s ease";
     if (isOpen) {
-      workspace.style.filter = hasProgressiveBlur ? "" : "blur(10px)";
-      workspace.style.opacity = hasProgressiveBlur ? "" : "0.8";
-      workspace.style.transform = "scale(0.9)";
-      workspace.style.transformOrigin = "center center";
+      workspace.style.filter = hasProgressiveBlur ? "" : "blur(4px)";
+      workspace.style.opacity = hasProgressiveBlur ? "" : "0.92";
     } else {
       workspace.style.filter = "";
       workspace.style.opacity = "";
-      workspace.style.transform = "";
-      workspace.style.transformOrigin = "";
     }
     return () => {
       workspace.style.filter = "";
       workspace.style.opacity = "";
-      workspace.style.transform = "";
-      workspace.style.transformOrigin = "";
       workspace.style.transition = "";
     };
   }, [isOpen]);
@@ -122,7 +116,7 @@ export const ModalRoot = ({
   if (!isOpen || !portalElement) return null;
 
   return createPortal(
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       {React.Children.map(children, (child, index) =>
         React.isValidElement(child)
           ? React.cloneElement(child, { key: child.key ?? `${id}-${index}` })
